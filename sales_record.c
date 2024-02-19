@@ -108,7 +108,7 @@ int show_sale_name(sale_record* s)
 	if(!strcmp(s -> name, uname))
 	{
 		sum += s -> total_price;
-		printf("%s %d %.1f %d:%d:%d\n", s->name, s->gid, s -> total_price, info->tm_hour, info->tm_min,info-> tm_sec);	
+		printf("用户名：%s\n 条形码：%d\n 商品价格：%.1f\n 售出时间：%d:%d:%d\n\n", s->name, s->gid, s -> total_price, info->tm_hour, info->tm_min,info-> tm_sec);	
 		return 1;
 	}
 	return 0;
@@ -131,7 +131,7 @@ int show_sale_time(sale_record* s)
 	if(!strcmp(s -> name, name))
 	{
 		sum += s -> total_price;
-		printf("%s %d %.1f %d:%d:%d\n", s->name, s->gid, s -> total_price, info->tm_hour, info->tm_min,info-> tm_sec);	
+		printf("用户名：%s\n 条形码：%d\n 商品价格：%.1f\n 售出时间：%d:%d:%d\n\n", s->name, s->gid, s -> total_price, info->tm_hour, info->tm_min,info-> tm_sec);	
 		return 1;
 	}
 	return 0;
@@ -153,7 +153,7 @@ int show_sale_all(sale_record* s)
 	
 	info = localtime(&s->sale_time);
 		
-		printf("%s %d %.1f %d:%d:%d\n", s->name, s->gid, s -> total_price, info->tm_hour, info->tm_min,info-> tm_sec);	
+		printf("用户名：%s\n 条形码：%d\n 商品价格：%.1f\n 售出时间：%d:%d:%d\n\n", s->name, s->gid, s -> total_price, info->tm_hour, info->tm_min,info-> tm_sec);	
 }
 
 void search_sales_record()

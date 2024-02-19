@@ -363,7 +363,7 @@ int show_fuzzy_goods(struct goods* g, char* name, char* manufactor)
 {
 	
 	if(!g->is_delete && strstr(g->name, name) != NULL && strstr(g->manufactor,manufactor) != NULL)
-		printf("%d %s %g %s %d %d\n", g->gid, g->name, g->price, g->manufactor, g->num, g->margin);
+		printf("条形码：%d\n 商品名称：%s\n 商品价格：%g\n 厂家：%s\n 数量：%d\n 余量%d\n\n", g->gid, g->name, g->price, g->manufactor, g->num, g->margin);
 		return 1;
 	return 0;
 }
@@ -512,10 +512,10 @@ void show_user_info()
 	
 	info = localtime(&user->reg_time);
 
-	printf("%s %s %s %s %s %s %d:%d:%d ", user->uname, user->upass, user->sex == '1' ? "男": "女", user->phone, user->uid, user->addr.prov,info->tm_hour, info->tm_min, info->tm_sec);
+	printf("用户名：%s\n 用户密码：%s\n 性别：%s\n 手机号：%s\n 身份证号%s\n 省：%s\n 注册时间：%d:%d:%d\n ", user->uname, user->upass, user->sex == '1' ? "男": "女", user->phone, user->uid, user->addr.prov,info->tm_hour, info->tm_min, info->tm_sec);
 	
 	info = localtime(&user-> last_login_time);
-	printf("%d:%d:%d\n", info->tm_hour, info -> tm_min, info-> tm_sec);
+	printf("登录时间：%d:%d:%d\n", info->tm_hour, info -> tm_min, info-> tm_sec);
 }
 
 
@@ -616,10 +616,10 @@ int show_user_all(user_info* user)
 	
 	if(!user->delete_flag)
 	{
-		printf("%s %s %s %s %s %s %d:%d:%d ", user->uname, user->upass, user->sex == '1' ? "男": "女", user->phone, user->uid, user->addr.prov,info->tm_hour, info->tm_min, info->tm_sec);
+		printf("用户名：%s\n 用户密码：%s\n 性别：%s\n 手机号：%s\n 身份证号%s\n 省：%s\n 注册时间：%d:%d:%d\n ", user->uname, user->upass, user->sex == '1' ? "男": "女", user->phone, user->uid, user->addr.prov,info->tm_hour, info->tm_min, info->tm_sec);
 	
 		info = localtime(&user-> last_login_time);
-		printf("%d:%d:%d\n", info->tm_hour, info -> tm_min, info-> tm_sec);
+		printf("登录时间：%d:%d:%d\n\n", info->tm_hour, info -> tm_min, info-> tm_sec);
 
 		return 1;
 	}

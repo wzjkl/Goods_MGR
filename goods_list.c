@@ -355,7 +355,7 @@ void update_goods(void)
 int show_goods(struct goods* g)
 {
 	if(!g->is_delete)
-		printf("%d %s %g %s %d %d\n", g->gid, g->name, g->price, g->manufactor, g->num, g->margin);
+		printf("条形码：%d\n 商品名称：%s\n 商品价格：%g\n 厂家：%s\n 数量：%d\n 余量%d\n\n", g->gid, g->name, g->price, g->manufactor, g->num, g->margin);
 		return 1;
 	return 0;
 }

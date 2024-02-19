@@ -75,9 +75,10 @@ void reset_passwd();
 // 模糊查询商品
 void search_fuzzy_goods(void);
 
-// 搜索用户的二级菜单
+// 搜索商品的二级菜单
 void second_query();
 //void fuzzy_query();
+
 // 结账函数
 void checkout();
 // 查询当前用户信息
