@@ -170,8 +170,8 @@ void create_user(void)
         printf("\n用户名已存在，请重新输入！\n");
     }
 
-    printf("\n密码：");
-    scanf("%s", password);  // 密码输入应该无回显或回显圆点等其他符号，防止旁边的人偷窥
+    // printf("\n密码：");
+    // scanf("%s", password);  // 密码输入应该无回显或回显圆点等其他符号，防止旁边的人偷窥
     getchar();
 
     printf("\n性别：");
@@ -208,12 +208,18 @@ void create_user(void)
     printf("\n小区：");
     scanf("%s", ui.addr.community);    
 
-    md5_string(password, ui.upass);    
+       
 
     ui.delete_flag = 0;
     ui.role = 2;
     ui.reg_time = time(NULL);
     ui.last_login_time = 0;
+
+	strcpy(password, ui.uid+12);
+	md5_string(password, ui.upass); 
+
+	printf("%s\n", ui.upass);
+
 
     push_back_user(ul, &ui);	
 
@@ -263,7 +269,7 @@ int login_auth(char* name)
             char p_flag;
             if(ui.last_login_time == 0)
             {
-                printf("\n否修改密码：Y/N\n");
+                printf("\n是否修改密码：Y/N\n");
                 scanf("\n%c", &p_flag);
 
                 if(p_flag == 'Y')
@@ -506,7 +512,7 @@ void show_user_info()
 	
 	info = localtime(&user->reg_time);
 
-	printf("%s %s %s %s %s %d:%d:%d ", user->uname, user->upass, user->sex == '1' ? "男": "女", user->phone, user->addr.prov,info->tm_hour, info->tm_min, info->tm_sec);
+	printf("%s %s %s %s %s %s %d:%d:%d ", user->uname, user->upass, user->sex == '1' ? "男": "女", user->phone, user->uid, user->addr.prov,info->tm_hour, info->tm_min, info->tm_sec);
 	
 	info = localtime(&user-> last_login_time);
 	printf("%d:%d:%d\n", info->tm_hour, info -> tm_min, info-> tm_sec);
@@ -610,7 +616,7 @@ int show_user_all(user_info* user)
 	
 	if(!user->delete_flag)
 	{
-		printf("%s %s %s %s %s %d:%d:%d ", user->uname, user->upass, user->sex == '1' ? "男": "女", user->phone, user->addr.prov,info->tm_hour, info->tm_min, info->tm_sec);
+		printf("%s %s %s %s %s %s %d:%d:%d ", user->uname, user->upass, user->sex == '1' ? "男": "女", user->phone, user->uid, user->addr.prov,info->tm_hour, info->tm_min, info->tm_sec);
 	
 		info = localtime(&user-> last_login_time);
 		printf("%d:%d:%d\n", info->tm_hour, info -> tm_min, info-> tm_sec);
